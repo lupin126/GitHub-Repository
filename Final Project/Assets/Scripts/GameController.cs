@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     public AudioClip victory;
     public AudioClip lose;
     public AudioSource musicSource;
+    public bool winCondition;
     private int score;
     private float timeLeft = 30;
     private bool gameOver;
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
         restart = false;
         startTime = false;
         alreadyPlayed = false;
+        winCondition = false;
         restartText.text = "";
         hardText.text = "";
         gameOverText.text = "";
@@ -70,6 +72,7 @@ public class GameController : MonoBehaviour
                 restart = false;
                 timeAttack = true;
                 alreadyPlayed = false;
+                winCondition = false;
                 restartText.text = "";
                 gameOverText.text = "";
                 winText.text = "";
@@ -144,6 +147,7 @@ public class GameController : MonoBehaviour
         {
             if (score >= 100)
             {
+                winCondition = true;
                 winText.text = "You win!";
                 gameOverText.text = "Game created by Paul Abbruzzese";
                 if (!alreadyPlayed)
@@ -159,6 +163,7 @@ public class GameController : MonoBehaviour
 
     void TimerEnded()
     {
+        winCondition = true;
         winText.text = "You win!";
         gameOverText.text = "Game created by Paul Abbruzzese";
         if (!alreadyPlayed)
